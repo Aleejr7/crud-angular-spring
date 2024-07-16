@@ -1,17 +1,25 @@
-<table mat-table [dataSource]="courses" class="mat-elevation-z8">
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> Curso </th>
-    <td mat-cell *matCellDef="let course"> {{course.name}} </td>
-  </ng-container>
+<mat-card>
+  <mat-card-content>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="category">
-    <th mat-header-cell *matHeaderCellDef> Categoria </th>
-    <td mat-cell *matCellDef="let course"> {{course.category}} </td>  <!-- variavel temporaria recebe da interface do course -->
-  </ng-container>
+    <mat-toolbar color="primary">
+      <span>Cursos Disponíveis</span>
+    </mat-toolbar>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> <!-- *para cada linha de registro ter as 2 colunas | associa a category e name -->
-</table>
+    <table mat-table [dataSource]="courses" class="mat-elevation-z8">
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Curso </th>
+        <td mat-cell *matCellDef="let course"> {{course.name}} </td>
+      </ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef> Categoria </th>
+        <td mat-cell *matCellDef="let course"> {{course.category}} </td>  <!-- variavel temporaria recebe da interface do course -->
+      </ng-container>
 
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr> <!-- *para cada linha de registro ter as 2 colunas | associa a category e name -->
+
+    </table>
+  </mat-card-content>
+</mat-card>
