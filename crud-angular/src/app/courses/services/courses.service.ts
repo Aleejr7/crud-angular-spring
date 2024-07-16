@@ -8,11 +8,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CoursesService {
 
-  constructor(httpCliente: HttpClient) { }  //o Angular automaticamente instancia o httpClient, por conta do "@Injectable"
+  private readonly API = '/assets/courses.json';
 
-  listFindAll(): Course[] {
-    return [
-      {_id: "1", name: 'Angular', category: 'Front-End'}
-    ]
+  constructor(private httpClient: HttpClient) { }  //o Angular automaticamente instancia o httpClient, por conta do "@Injectable"
+
+  listFindAll(){
+    return this.httpClient.get<Course[]>(this.API); //o get retorna um Observable, por isso usamos o <> para especificar o tipo
+      //.pipe(            // `cano` aonde se passa os dados e manipular os dados caso seja necessário
+      //  tap(courses: Course => console.log(courses))           // tap é o operador do RXJS
+      //)
   }
 }

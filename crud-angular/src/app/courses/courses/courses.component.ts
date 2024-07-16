@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Course } from '../model/course';
 import { CoursesService } from '../services/courses.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-courses',  //tag que usamos no HTML
@@ -9,9 +10,7 @@ import { CoursesService } from '../services/courses.service';
 })
 export class CoursesComponent {
 
-  courses: Course[] = [
-    {_id: "1", name: 'Angular', category: 'Front-End'}
-  ];
+  courses: Observable <Course[]>;
   displayedColumns = ['name', 'category'];
 
   //coursesService: CoursesService;
