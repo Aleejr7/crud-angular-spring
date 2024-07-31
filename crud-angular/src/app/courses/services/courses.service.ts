@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Course } from '../model/course';
 import { HttpClient } from '@angular/common/http';
-import { first } from 'rxjs';
+import { delay, first } from 'rxjs';
 
 
 @Injectable({
@@ -16,6 +16,7 @@ export class CoursesService {
   listFindAll(){
     return this.httpClient.get<Course[]>(this.API) //o get retorna um Observable, por isso usamos o <> para especificar o tipo
       .pipe(                                       //o pipe é um canal de manipulacao de dados com os operadores RXJS
-        first());                                  //o first é um operador RXJS, ira pegar apenas o primeiro objeto que o servidor irá retornar
+        first(),                                   //o first é um operador RXJS, ira pegar apenas o primeiro objeto que o servidor irá retornar
+        delay(5000));
   }
 }
